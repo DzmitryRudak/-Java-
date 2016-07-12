@@ -16,8 +16,8 @@ for (int y = 0; y < x.length; y++) { // Determining the size of the array
 float sum = 0;
 for (int a = 0; a < x.length; a++);{
 	sum += x[a];}
-float average = sum/x.length;
-System.out.println("Среднее арифметическое массива:" + average);
+float average = sum/x.length; // average value
+System.out.println("Среднее арифметическое массива:" + average); 
 	}
 }
 	
