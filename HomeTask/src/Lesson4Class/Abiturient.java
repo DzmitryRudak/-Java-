@@ -10,94 +10,67 @@
 
 package Lesson4Class;
 
+import java.util.Arrays;
+
 public class Abiturient {
-	public static String [] major = {}; // main array for objects
+	public static final int minPositiveScore = 15;
+	public static final int minScore = 0;
+	public static final int maxScore = 100;
+	
 	private int idNumber; // id
 	private String Surname; // Фамилия
 	private String Name; // Имя
 	private String Patronymic; // Отчество
 	private String Adress; // Адрес
 	private int Phone; // Телефон
-	private int Marks; // Оценка
+	private int[] Scores; // Оценка
+	private int totalScores;
 	
-	public Abiturient() {
+	public Abiturient(int i, String string, String string2, String string3, String string4, String string5, int j, int k, int l, int m) {
 }
-	
-	public Abiturient(String strAbiturient) {
-		String[] objects = strAbiturient.split("~");
-		this.idNumber = Integer.valueOf(objects[0]);
-		this.Surname = objects[1];
-		this.Name = objects[2];
-		this.Patronymic = objects[3];
-		this.Adress = objects[4];
-		this.Phone = Integer.valueOf(objects[5]);
-		this.Marks = Integer.valueOf(objects[6]);
 		
-	}
-	
-	public Abiturient(int idNumber, String Surname, String Name, String Patronymic, String Adress, int Phone, int Marks) {
+	public Abiturient(int idNumber, String Surname, String Name, String Patronymic, String Adress, int Phone, int... Scores) {
 		this.idNumber = idNumber;
 		this.Surname = Surname;
 		this.Name = Name;
 		this.Patronymic = Patronymic;
 		this.Adress = Adress;
 		this.Phone = Phone;
-		this.Marks = Marks;
+		setScores1(Scores);
+	}
 		
-	}
-	
-	public Abiturient(String[] strAbiturient) {
-		this.idNumber = Integer.valueOf(strAbiturient[0]);
-		this.Surname = strAbiturient[1];
-		this.Name = strAbiturient[2];
-		this.Patronymic = strAbiturient[3];
-		this.Adress = strAbiturient[4];
-		this.Phone = Integer.valueOf(strAbiturient[5]);
-		this.Marks = Integer.valueOf(strAbiturient[6]);
-	}
-	
-	@Override
-	public String toString() {
-		String str = new String();
-		str = str.concat(Integer.toString(this.idNumber)).concat("~");
-		str = str.concat(this.Surname).concat("~");
-		str = str.concat(this.Name).concat("~");
-		str = str.concat(this.Patronymic).concat("~");
-		str = str.concat(this.Adress).concat("~");
-		str = str.concat(Integer.toString(this.Phone)).concat("~");
-		str = str.concat(Integer.toString(this.Marks)).concat("~");
-		return str;
-		
-	}
-	
+		// getters		
 	public int getIdNumber() {
-		return this.idNumber;
+		return idNumber;
 	}
 	
 	public String getSurname() {
-		return this.Surname;
+		return Surname;
 	}
 	
 	public String getName() {
-		return this.Name;
+		return Name;
 	}
 	
 	public String getPatronymic() {
-		return this.Patronymic;
+		return Patronymic;
 	}
 	
 	public String getAdress () {
-		return this.Adress;
+		return Adress;
 	}
 	
 	public int getPhone() {
-		return this.Phone;
+		return Phone;
 	}
 	
-	public int gerMarks() {
-		return this.Marks;
+	public int[] getScores() {
+		return Scores;
 	}
-	
+	public int getTotalScores() {
+		return totalScores;
+	}
+	// setters
 	public void setIdNumber(int idNumber) {
 		this.idNumber = idNumber;
 	}
@@ -122,7 +95,32 @@ public class Abiturient {
 		this.Phone = Phone; 
 	}
 	
-	public void setMarks(int Marks) {
-		this.Marks = Marks;
+	public final void setScores1(int... scores) {
+		scoreValidation(scores);
+		setScores1(scores);
+		this.Scores = Scores;
 	}
+
+	private void scoreValidation(int[] scores) {
+		for (int current : scores) {
+			if ((minScore>current) || (maxScore<current)) {
+				 throw new IllegalArgumentException("Illegal score " + current);
+			}
+		}
+	}
+	private void totalScores(int... scores) {
+        int total = 0;
+        for (int score : scores) {
+            total += score;
+        }
+        totalScores = total;
+    }
+ 
+    @Override
+    public String toString() {
+        final String delimeter = ",";
+        return idNumber + delimeter + Surname + delimeter + Name + delimeter + Patronymic 
+            + delimeter + Adress + delimeter + Phone + delimeter + Arrays.toString(Scores);
+    }
+
 }
