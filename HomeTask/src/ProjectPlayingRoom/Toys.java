@@ -2,10 +2,12 @@
 
 package ProjectPlayingRoom;
 
+import java.util.Set;
+
 public abstract class Toys {
 	String name; // name
 	int price; // price
-	int age; // age groupe
+	Set<String> age; // age groupe
 	String type; // related type
 	
 	public Toys () {
@@ -27,11 +29,11 @@ public abstract class Toys {
 		this.price = price;
 	}
 
-	public int getAge() {
+	public Set<String> getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(Set<String> age) {
 		this.age = age;
 	}
 
@@ -43,4 +45,16 @@ public abstract class Toys {
 		this.type = type;
 	}
 
+	@Override
+	public String toString() {
+		return "("+ name +" : "+ price +")";
+	}
+	
+	public int getPrice1() {
+		return price;
+	}
+	
+	public String getName1() {
+		return name;
+	}
 }

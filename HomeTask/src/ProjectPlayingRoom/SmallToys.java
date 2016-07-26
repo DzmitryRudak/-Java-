@@ -2,16 +2,14 @@
 
 package ProjectPlayingRoom;
 
+import java.util.Set;
+
 public class SmallToys extends Toys {
 	
-public SmallToys (String name, int price, int age) {
+public SmallToys (String name, int price, Set<String> i) {
 		
 		this.name=name; // name
 		this.price=price; // price
-		this.age=age; // age group
-		
-		SmallToys CUBES = new SmallToys ("CUBES", 5, 2);
-		SmallToys PUZZLE = new SmallToys ("PUZZLE", 4, 2);
-		SmallToys SOLDIERS = new SmallToys ("SOLDIERS", 3, 2);
+		this.age=i; // age group		
 	}
 }
