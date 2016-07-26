@@ -3,8 +3,7 @@
 package ProjectPlayingRoom;
 
 public class RelatedTypes {
-	
-	int cash= 100;
+		
 	public enum BigToys {
 		FIRETRUCK, TRACTOR, ELECTRICCAR
 	}
